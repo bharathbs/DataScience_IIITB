@@ -45,3 +45,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+Database/Graded Assigment/DataFolders/cust_dimen.csv
+*.csv
+*.ipynb
+R/FINAL ASSIGNMENT/.RData
+*.Rhistory
+python/List+Comprehensions+in+Python.pdf
+*.zip
+R/Introduction.R
+*.R
+python/extra learnings/Pandas/pycon-pandas-tutorial-master/pycon-pandas-tutorial-master/youtube.png
