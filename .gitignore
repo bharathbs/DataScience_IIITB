@@ -52,6 +52,5 @@ R/FINAL ASSIGNMENT/.RData
 *.Rhistory
 python/List+Comprehensions+in+Python.pdf
 *.zip
-R/Introduction.R
-*.R
+R/*.R
 python/extra learnings/Pandas/pycon-pandas-tutorial-master/pycon-pandas-tutorial-master/youtube.png

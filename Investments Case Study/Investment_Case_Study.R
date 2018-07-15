@@ -30,24 +30,35 @@ rounds2<- read.csv("rounds2.csv",stringsAsFactors = F)
 
 rounds2$company_permalink <- tolower(rounds2$company_permalink)
 
-unique_rounds_company <- length(unique(rounds2$company_permalink))
+num_unique_company_permalink <- length(unique(rounds2$company_permalink))
 
 #### Display the result
-unique_rounds_company
+num_unique_company_permalink 
 
 
-##### 2,Number of unique companies present in companies
+##### 2.Number of unique companies present in companies
 ## Convert all enteries under permalink column to lower case to find unique enteries
 
 companies$permalink <- tolower(companies$permalink)
 
-unique_companies <- length(unique(companies$permalink))
+num_unique_permalink <- length(unique(companies$permalink))
 
 #### Display the result
-unique_companies
+num_unique_permalink
+
+
+##### 3. In the companies data frame, which column can be used as the unique key for each company? Write the name of the column.
+## Permalink column has to be the unique key since other columns have N/A or blank Values
 
 
 ##### 4.Are there any companies in the rounds2 file which are not present in companies 
+
+
+
+
+
+##### 5.Merge the two data frames so that all variables (columns) in the companies frame are added to the rounds2 data frame.Name the merged frame master_frame.
+#####   How many observations are present in master_frame ?
 
 
 
