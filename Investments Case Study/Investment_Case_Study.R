@@ -213,30 +213,66 @@ master_frame_with_primary_sector<- merge(x=master_frame_with_primary_sector,y=ma
 #### Remove is_sector column since we need to have only Master_Frame with Primary Sector and Main Sector
 master_frame_with_primary_sector$is_sector<-NULL
 
-# Creating function for answering each of the qns instead of repeating code.
-# Function to retrieve DataFrame for country with FT as Venture and 5-15 million uSD.
+# Filter DataFrame for  FT as Venture and 5-15 million uSD.
 
-data_for_country <- function(countryName){
-                      subset(master_frame_with_primary_sector,country_code == countryName & funding_round_type == "venture" & raised_amount_usd <= 15000000 & raised_amount_usd >= 5000000)
-                    }
+master_frame_with_primary_sector <- subset(master_frame_with_primary_sector,funding_round_type == "venture" 
+                                                                            & raised_amount_usd <= 15000000 
+                                                                            & raised_amount_usd >= 5000000)
+                    
 
 
 #### Top 1 Country -- USA
-#### Dataframe for USA with FT and 5-15 million USD.
+#### Dataframe for USA with FT  as venture and 5-15 million USD.
 
-top1_d1<- data_for_country(top9$Country_Code[1])
+top1_d1<- subset(master_frame_with_primary_sector,country_code==top9$Country_Code[1])
 
 
 #The total number (or count) of investments for each main sector in a separate column
+top1_d2<- top1_d1 %>% group_by(main_sector) %>% summarise(total_number=n()) %>% arrange(desc(total_number))
+top1_d2 
+
+# The total amount invested in each main sector in a separate column
+
+top1_d3<- top1_d1 %>% group_by(main_sector) %>% summarise(total_amount = sum(raised_amount_usd)) %>% arrange(desc(total_amount))
+
+top1_d3
 
 
+# Total number of investments
+top1_count_investments <- top1_d2 %>% summarise(sum(total_number))
+top1_count_investments
+
+# Total amount of investments
+top1_amount_investments <- top1_d3 %>% summarise(sum(total_amount))
+top1_amount_investments
 
 
+# Top 2 Country --- Other Countries
+# Dataframe for Other Countries with FT  as venture and 5-15 million USD.
+
+master_frame$country_code[which(master_frame$country_code=="")]="Other Countries"
+
+top2_d1<- subset(master_frame_with_primary_sector,country_code=="")
 
 
+#The total number (or count) of investments for each main sector in a separate column
+top2_d2<- top2_d1 %>% group_by(main_sector) %>% summarise(total_number=n()) %>% arrange(desc(total_number))
+top2_d2 
+
+# The total amount invested in each main sector in a separate column
+
+top2_d3<- top2_d1 %>% group_by(main_sector) %>% summarise(total_amount = sum(raised_amount_usd)) %>% arrange(desc(total_amount))
+
+top2_d3
 
 
+# Total number of investments
+top2_count_investments <- top2_d2 %>% summarise(sum(total_number))
+top2_count_investments
 
+# Total amount of investments
+top2_amount_investments <- top2_d3 %>% summarise(sum(total_amount))
+top2_amount_investments
 
 
 
